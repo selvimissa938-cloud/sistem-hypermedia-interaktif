@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hypermedia Kebudayaan Suku Boti - TTS</title>
+    <!-- Menghubungkan File CSS Eksternal -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Lompati ke konten utama</a>
+
+    <!-- GLOBAL NAVIGATION HEADER (Simpul Anchors) -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Suku Boti Hypermedia</h1>
+            </div>
+            <nav aria-label="Navigasi Utama">
+                <ul>
+                    <li><a href="#v1" id="nav-v1" class="active" onclick="switchNode('v1'); return false;">v1: Beranda</a></li>
+                    <li><a href="#v2" id="nav-v2" onclick="switchNode('v2'); return false;">v2: Profil</a></li>
+                    <li><a href="#v3" id="nav-v3" onclick="switchNode('v3'); return false;">v3: Falsafah Ukun-Lais</a></li>
+                    <li><a href="#v4" id="nav-v4" onclick="switchNode('v4'); return false;">v4: Galeri Tenun</a></li>
+                    <li><a href="#v5" id="nav-v5" onclick="switchNode('v5'); return false;">v5: Peta & Audio</a></li>
+                    <!-- LINK LAPORAN GOOGLE DRIVE TELAH TERPASANG DI HEADER -->
+                    <li>
+                        <a href="https://drive.google.com/file/d/1v7kO9f675oWZ6PaXWS6I_LpcK32iABTv/view?usp=sharing" target="_blank" style="background-color: #FFD700; color: #121212; padding: 6px 12px; border-radius: 4px; font-weight: bold; text-decoration: none; margin-left: 10px;">
+                            📄 Laporan Projek
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- BREADCRUMB TRAIL (Fitur Anti-Disorientasi Navigasi) -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="#v1" onclick="switchNode('v1'); return false;">Beranda</a></li>
+            <li id="breadcrumb-current" aria-current="page">v1: Beranda Utama</li>
+        </ol>
+    </nav>
+
+    <!-- MAIN KONTEN CONTAINER -->
+    <main id="main-content">
+
+        <!-- SIMPUL v1: BERANDA MENARIK & INTERAKTIF -->
+        <section id="node-v1" class="node-view active-node">
+            
+            <!-- HERO BANNER -->
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <span class="hero-tag">Sistem Hypermedia Interaktif</span>
+                    <h2 class="hero-title">Eksplorasi Kebudayaan Warisan Suku Boti</h2>
+                    <p class="hero-description">
+                        Menjelajahi keanekaragaman tradisi, tata hukum adat <em>Ukun-Lais</em>, keindahan seni tenun ikat, serta fonetik bahasa lokal masyarakat Suku Boti di Kabupaten Timor Tengah Selatan.
+                    </p>
+                    
+                    <!-- TOMBOL LAPORAN GOOGLE DRIVE TELAH TERPASANG DI HERO BANNER -->
+                    <div style="margin-top: 1.5rem;">
+                        <a href="https://drive.google.com/file/d/1v7kO9f675oWZ6PaXWS6I_LpcK32iABTv/view?usp=sharing" target="_blank" style="display: inline-block; background-color: #FFD700; color: #121212; font-weight: bold; padding: 10px 20px; border-radius: 6px; text-decoration: none; border: 2px solid #FFD700;">
+                            📄 Baca Laporan Lengkap Projek (PDF/Word)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KONTEN UTAMA BERANDA -->
+            <div class="grid-2col">
+                <!-- Kolom Kiri: AI Accessibility & Deskripsi Komunitas -->
+                <div class="card card-interactive">
+                    <h3>Struktur & Pembagian Komunitas</h3>
+                    <p style="margin-top: 0.5rem;">
+                        Suku Boti terbagi menjadi dua kelompok utama yang saling berdampingan:
+                    </p>
+                    <ul style="margin: 0.8rem 0 1.2rem 1.2rem; color: var(--text-muted);">
+                        <li><strong>Boti Dalam:</strong> Warga yang teguh mempertahankan tradisi murni dan hukum adat leluhur.</li>
+                        <li><strong>Boti Luar:</strong> Masyarakat yang telah berinteraksi dengan modernisasi dan pendidikan formal.</li>
+                    </ul>
+                    
+                    <!-- AI Feature Integration: TTS -->
+                    <div class="ai-panel">
+                        <h3>🎙️ Narasi Audio Interaktif (AI TTS)</h3>
+                        <p>Dengarkan pengantar singkat mengenai kebudayaan Suku Boti untuk aksesibilitas pembaca:</p>
+                        <button class="btn-ai" id="btn-play-tts" onclick="playTextToSpeech()">▶ Putar Narasi Audio</button>
+                    </div>
+                </div>
+
+                <!-- Kolom Kanan: Identitas Adat -->
+                <div class="card card-interactive">
+                    <h3>Identitas Kebudayaan</h3>
+                    <div style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.8;">
+                        <p>📍 <strong>Lokasi:</strong> Kec. Ki'e, Kab. TTS, NTT</p>
+                        <p>👑 <strong>Pemimpin Adat:</strong> Usif (Raja Boti)</p>
+                        <p>🌿 <strong>Prinsip Hidup:</strong> Harmonisasi Alam & Manusia</p>
+                        <p>🗣️ <strong>Bahasa Utama:</strong> Uab Meto</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD GRID NAVIGASI INTERAKTIF -->
+            <div style="margin-top: 2rem;">
+                <h3>Pilih Topik Eksplorasi</h3>
+                <div class="nav-grid">
+                    <a href="#v2" class="nav-card" onclick="switchNode('v2'); return false;">
+                        <div>
+                            <div class="nav-card-icon">👑</div>
+                            <div class="nav-card-title">Profil Komunitas</div>
+                            <div class="nav-card-desc">Silsilah Usif Boti dan struktur adat Boti Dalam & Boti Luar.</div>
+                        </div>
+                    </a>
+
+                    <a href="#v3" class="nav-card" onclick="switchNode('v3'); return false;">
+                        <div>
+                            <div class="nav-card-icon">📜</div>
+                            <div class="nav-card-title">Falsafah Ukun-Lais</div>
+                            <div class="nav-card-desc">Hukum adat, pandangan hidup, dan kepercayaan Halaika.</div>
+                        </div>
+                    </a>
+
+                    <a href="#v4" class="nav-card" onclick="switchNode('v4'); return false;">
+                        <div>
+                            <div class="nav-card-icon">🧵</div>
+                            <div class="nav-card-title">Galeri Tenun Ikat</div>
+                            <div class="nav-card-desc">Kerajinan tenun tradisional dan pewarnaan dari bahan alami.</div>
+                        </div>
+                    </a>
+
+                    <a href="#v5" class="nav-card" onclick="switchNode('v5'); return false;">
+                        <div>
+                            <div class="nav-card-icon">🗺️</div>
+                            <div class="nav-card-title">Peta & Audio Bahasa</div>
+                            <div class="nav-card-desc">Letak geografis serta sampel audio ucapan Bahasa Uab Meto.</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- FOOTER ANCHOR NAVIGATION -->
+            <div class="node-anchors">
+                <span>Titik Mulai Navigasi G = (V, E)</span>
+                <a href="#v2" onclick="switchNode('v2'); return false;">Lanjut ke v2: Profil Komunitas &rarr;</a>
+            </div>
+
+        </section>
+
+        <!-- SIMPUL v2: PROFIL KOMUNITAS -->
+        <section id="node-v2" class="node-view">
+            <div class="card">
+                <h2>v2: Profil & Komunitas Adat Suku Boti</h2>
+                <p>Mengenal struktur kepemimpinan, silsilah Raja (Usif) Boti, serta pembagian wilayah komunitas Boti Dalam dan Boti Luar.</p>
+            </div>
+
+            <div class="grid-2col">
+                <div class="card">
+                    <h3>Kepemimpinan Usif (Raja) Boti</h3>
+                    
+                    <!-- ELEMEN FOTO PROFIL USIF BOTI -->
+                    <div class="profile-img-container">
+                        <img src="raja_boti.jpg" alt="Foto Usif (Raja) Boti" class="profile-img">
+                        <p class="profile-img-caption">Usif (Raja) Boti - Pemimpin Adat dan Spiritual Komunitas Boti Dalam</p>
+                    </div>
+
+                    <p>Komunitas Boti Dalam dipimpin oleh seorang <strong>Usif</strong> (Raja Boti) yang bertindak sebagai pemimpin adat, hakim peradilan adat, sekaligus pengayom spiritual warga. Kepemimpinan ini diturunkan secara turun-temurun berdasarkan garis keturunan adat.</p>
+                </div>
+
+                <aside class="card">
+                    <h3>Pintasan Eksplorasi</h3>
+                    <ul>
+                        <li><a href="#v1" class="link-gold" onclick="switchNode('v1'); return false;">&larr; Kembali ke Beranda (v1)</a></li>
+                        <li><a href="#v3" class="link-gold" onclick="switchNode('v3'); return false;">Lihat Falsafah Ukun-Lais (v3) &rarr;</a></li>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="node-anchors">
+                <a href="#v1" onclick="switchNode('v1'); return false;">&larr; Kembali ke Beranda</a>
+                <a href="#v3" onclick="switchNode('v3'); return false;">Lanjut ke v3: Falsafah &rarr;</a>
+            </div>
+        </section>
+
+        <!-- SIMPUL v3: FALSAFAH UKUN - LAIS -->
+        <section id="node-v3" class="node-view">
+            <div class="card">
+                <h2>v3: Falsafah Ukun - Lais & Kepercayaan Halaika</h2>
+                <p>Masyarakat Suku Boti Dalam hidup berdasarkan prinsip <em>Ukun - Lais</em> (Hukum Adat dan Pandangan Hidup) yang menyatu erat dengan kepercayaan lokal <em>Halaika</em>.</p>
+            </div>
+
+            <div class="grid-2col">
+                <div class="card">
+                    <h3>Prinsip Keseimbangan Alam & Manusia</h3>
+                    <p>Dalam pandangan hidup Suku Boti, <em>Uis Neno</em> (Dewa Langit/Pencipta) dan <em>Uis Afu</em> (Dewa Bumi/Pelihara) dipuja sebagai sumber kehidupan. Hukum adat melarang pengrusakan lingkungan dan mewajibkan penghormatan terhadap alam sekitar.</p>
+                    <p>Setiap pelanggaran adat diselesaikan secara musyawarah di bawah pimpinan Raja (Ratu) Boti tanpa menggunakan sistem hukum formal.</p>
+
+                    <!-- AI Feature Integration: NMT -->
+                    <div class="ai-panel">
+                        <h3>AI NMT Translation Integration</h3>
+                        <p>Terjemahkan istilah bahasa daerah <strong>Uab Meto</strong> secara otomatis:</p>
+                        <button class="btn-ai" id="btn-nmt" onclick="toggleTranslation()">🌐 Terjemahkan Istilah (Uab Meto &harr; ID/EN)</button>
+                        <div id="nmt-result" class="translation-result">
+                            <p><strong>Uis Neno:</strong> Dewa Langit / Penguasa Alam Atas</p>
+                            <p><strong>Uis Afu:</strong> Dewa Bumi / Pemelihara Kehidupan</p>
+                            <p><strong>Ukun - Lais:</strong> Hukum Adat dan Pandangan Hidup Keseimbangan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="card">
+                    <h3>Peta Keterhubungan Anchor</h3>
+                    <p>Simpul ini terhubung secara <em>bi-directional</em> ke:</p>
+                    <ul class="list-spaced">
+                        <li><a href="#v1" class="link-gold" onclick="switchNode('v1'); return false;">v1: Beranda Utama</a></li>
+                        <li><a href="#v2" class="link-gold" onclick="switchNode('v2'); return false;">v2: Profil & Komunitas</a></li>
+                        <li><a href="#v5" class="link-gold" onclick="switchNode('v5'); return false;">v5: Peta Interaktif & Audio</a></li>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="node-anchors">
+                <a href="#v1" onclick="switchNode('v1'); return false;">&larr; Kembali ke v1: Beranda</a>
+                <a href="#v4" onclick="switchNode('v4'); return false;">Lanjut ke v4: Galeri Tenun &rarr;</a>
+            </div>
+        </section>
+
+        <!-- SIMPUL v4: GALERI MOTIF TENUN -->
+        <section id="node-v4" class="node-view">
+            <div class="card">
+                <h2>v4: Galeri Motif & Tenun Ikat Boti</h2>
+                <p>Koleksi motif tenun tradisional Suku Boti yang dibuat menggunakan bahan dan pewarna alami dari tumbuhan lokal.</p>
+            </div>
+
+            <div class="grid-2col">
+                <div class="card">
+                    <h3>Motif Khas & Pewarnaan Alami</h3>
+                    <p>Proses pembuatan tenun ikat Boti memakan waktu bulanan, mulai dari memintal kapas lokal hingga pewarnaan menggunakan akar mengkudu dan daun tarum.</p>
+                    
+                    <!-- GALERI GAMBAR TENUN BOTI -->
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="tenun1.jpg" alt="Kain Tenun Ikat Tradisional Boti">
+                            <div class="gallery-caption">Motif Traditional Boti</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="tenun2.jpg" alt="Proses Pewarnaan Alami Tenun Boti">
+                            <div class="gallery-caption">Pewarnaan Alami</div>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="card">
+                    <h3>Pintasan Eksplorasi</h3>
+                    <ul>
+                        <li><a href="#v1" class="link-gold" onclick="switchNode('v1'); return false;">&larr; Kembali ke Beranda (v1)</a></li>
+                        <li><a href="#v3" class="link-gold" onclick="switchNode('v3'); return false;">Lihat Falsafah Ukun-Lais (v3) &rarr;</a></li>
+                        <li><a href="#v5" class="link-gold" onclick="switchNode('v5'); return false;">Ke Peta & Audio Bahasa (v5) &rarr;</a></li>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="node-anchors">
+                <a href="#v3" onclick="switchNode('v3'); return false;">&larr; Kembali ke v3: Falsafah</a>
+                <a href="#v5" onclick="switchNode('v5'); return false;">Lanjut ke v5: Peta & Audio &rarr;</a>
+            </div>
+        </section>
+
+        <!-- SIMPUL v5: PETA & AUDIO BAHASA -->
+        <section id="node-v5" class="node-view">
+            <div class="card">
+                <h2>v5: Peta Wilayah Adat & Audio Bahasa Uab Meto</h2>
+                <p>Pemetaan geografis lokasi Suku Boti di Timor Tengah Selatan serta direktori audio fonetik Bahasa Uab Meto.</p>
+            </div>
+
+            <div class="grid-2col">
+                <div class="card">
+                    <h3>Lokasi Geografis Desa Boti</h3>
+                    <p>Desa Boti terletak di Kecamatan Ki'e, Kabupaten Timor Tengah Selatan (TTS), Nusa Tenggara Timur. Terisolasi oleh pegunungan dan perbukitan, wilayah ini terbagi atas kawasan permukiman adat Boti Dalam dan kawasan Boti Luar.</p>
+                    
+                    <div class="ai-panel">
+                        <h3>Kamus Audio Bahasa Uab Meto</h3>
+                        <p>Dengarkan sampel ujaran salam adat dalam bahasa Uab Meto:</p>
+                        <button class="btn-ai" id="btn-play-uab" onclick="playUabMetoAudio()">🔊 Putar Audio Uab Meto</button>
+                    </div>
+                </div>
+
+                <aside class="card">
+                    <h3>Pintasan Eksplorasi</h3>
+                    <ul>
+                        <li><a href="#v1" class="link-gold" onclick="switchNode('v1'); return false;">&larr; Kembali ke Beranda (v1)</a></li>
+                        <li><a href="#v2" class="link-gold" onclick="switchNode('v2'); return false;">Lihat Profil Komunitas (v2) &rarr;</a></li>
+                        <li><a href="#v4" class="link-gold" onclick="switchNode('v4'); return false;">Lihat Galeri Tenun (v4) &rarr;</a></li>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="node-anchors">
+                <a href="#v4" onclick="switchNode('v4'); return false;">&larr; Kembali ke v4: Galeri Tenun</a>
+                <a href="#v1" onclick="switchNode('v1'); return false;">Kembali ke Beranda (v1) &rarr;</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER & PERMANENT SITEMAP (Lost in Hyperspace Prevention) -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h3 class="footer-title">Arsitektur Hypermedia</h3>
+                <p class="footer-text">
+                    Standar Encoding: UTF-8 | Aksesibilitas: WCAG AAA
+                </p>
+            </div>
+            <div class="sitemap">
+                <h3 class="footer-title">Peta Situs (Sitemap G)</h3>
+                <ul>
+                    <li><a href="#v1" onclick="switchNode('v1'); return false;">v1: Beranda</a></li>
+                    <li><a href="#v2" onclick="switchNode('v2'); return false;">v2: Profil</a></li>
+                    <li><a href="#v3" onclick="switchNode('v3'); return false;">v3: Falsafah</a></li>
+                    <li><a href="#v4" onclick="switchNode('v4'); return false;">v4: Galeri Motif</a></li>
+                    <li><a href="#v5" onclick="switchNode('v5'); return false;">v5: Peta & Audio</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT NAVIGASI HYPERMEDIA NON-LINIER & FITUR AI TTS -->
+    <script>
+        // 1. FUNGSI PERPINDAHAN SIMPUL NAVIGASI (v1, v2, v3, v4, v5)
+        function switchNode(nodeId) {
+            document.querySelectorAll('.node-view').forEach(node => {
+                node.classList.remove('active-node');
+            });
+            
+            document.querySelectorAll('nav a').forEach(nav => {
+                nav.classList.remove('active');
+            });
+
+            if(nodeId === 'v1') {
+                document.getElementById('node-v1').classList.add('active-node');
+                document.getElementById('nav-v1').classList.add('active');
+                document.getElementById('breadcrumb-current').innerText = "v1: Beranda Utama";
+            } else if(nodeId === 'v2') {
+                document.getElementById('node-v2').classList.add('active-node');
+                document.getElementById('nav-v2').classList.add('active');
+                document.getElementById('breadcrumb-current').innerText = "v2: Profil Komunitas";
+            } else if(nodeId === 'v3') {
+                document.getElementById('node-v3').classList.add('active-node');
+                document.getElementById('nav-v3').classList.add('active');
+                document.getElementById('breadcrumb-current').innerText = "v3: Falsafah Ukun - Lais";
+            } else if(nodeId === 'v4') {
+                document.getElementById('node-v4').classList.add('active-node');
+                document.getElementById('nav-v4').classList.add('active');
+                document.getElementById('breadcrumb-current').innerText = "v4: Galeri Motif Tenun";
+            } else if(nodeId === 'v5') {
+                document.getElementById('node-v5').classList.add('active-node');
+                document.getElementById('nav-v5').classList.add('active');
+                document.getElementById('breadcrumb-current').innerText = "v5: Peta & Audio Bahasa";
+            }
+
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // 2. FUNGSI

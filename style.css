@@ -1,0 +1,538 @@
+/* ==========================================================================
+   1. RESET & STANDAR WCAG AAA TYPOGRAPHY & COLORS
+   ========================================================================== */
+:root {
+    /* Rasio Kontras > 7:1 (WCAG AAA) */
+    --bg-main: #121212;         /* Latar Utama Gelap */
+    --bg-card: #1E1E1E;         /* Latar Kartu / Konten */
+    --text-main: #F5F5F5;       /* Teks Utama (Kontras 15.8:1) */
+    --text-muted: #E0E0E0;      /* Teks Sekunder */
+    --accent-gold: #FFD700;     /* Elemen Aktif / Highlight (Kontras 13.5:1) */
+    --border-color: #444444;    /* Garis Batas Legibel */
+    --focus-outline: #00E5FF;   /* Highlight Aksesibilitas Keyboard */
+    
+    --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    font-size: 1.125rem; /* 18px Base Font Size untuk Kejelasan Baca */
+}
+
+/* Focus State Permanen untuk Navigasi Keyboard (WCAG) */
+a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--focus-outline);
+    outline-offset: 3px;
+}
+
+/* Skip to Content (Aksesibilitas Pembaca Layar) */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent-gold);
+    color: #000;
+    padding: 8px;
+    z-index: 100;
+}
+.skip-link:focus {
+    top: 0;
+}
+
+/* ==========================================================================
+   2. LAYOUT & ANTI-DISORIENTASI (HEADER, BREADCRUMB, FOOTER)
+   ========================================================================== */
+header {
+    background-color: #000000;
+    border-bottom: 2px solid var(--accent-gold);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem;
+    border-bottom: 2px solid transparent;
+}
+
+nav a:hover, nav a.active {
+    color: var(--accent-gold);
+    border-bottom-color: var(--accent-gold);
+}
+
+/* Breadcrumb Navigasi Permanen */
+.breadcrumb-nav {
+    max-width: 1200px;
+    margin: 1rem auto 0;
+    padding: 0 2rem;
+}
+
+.breadcrumb {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.breadcrumb li+li::before {
+    content: " > ";
+    color: var(--accent-gold);
+    padding-right: 0.5rem;
+}
+
+.breadcrumb a {
+    color: var(--accent-gold);
+    text-decoration: underline;
+}
+
+/* Main Container */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    min-height: 65vh;
+}
+
+/* Section Switcher (Simpul Rendering) */
+.node-view {
+    display: none;
+}
+
+.node-view.active-node {
+    display: block;
+}
+
+/* ==========================================================================
+   3. HERO BANNER & TAMPILAN BERANDA MENARIK (v1)
+   ========================================================================== */
+.hero-banner {
+    position: relative;
+    background: linear-gradient(135deg, #1e1e1e 0%, #0d1b2a 100%);
+    border: 1px solid var(--accent-gold);
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    max-width: 800px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-tag {
+    display: inline-block;
+    background-color: rgba(255, 215, 0, 0.15);
+    color: var(--accent-gold);
+    border: 1px solid var(--accent-gold);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.hero-description {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+/* Card Interactive */
+.card-interactive {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-interactive:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-gold);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.15);
+}
+
+/* Grid Navigation Cards pada Beranda */
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1rem;
+}
+
+.nav-card {
+    background-color: #1a1a1a;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.2rem;
+    text-decoration: none;
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.nav-card:hover {
+    border-color: var(--accent-gold);
+    background-color: #242424;
+}
+
+.nav-card-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.nav-card-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--accent-gold);
+    margin-bottom: 0.3rem;
+}
+
+.nav-card-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   4. WIREFRAME KONTEN SIMPUL (v2, v3, v4, & v5)
+   ========================================================================== */
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+}
+
+.grid-2col {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .grid-2col { grid-template-columns: 1fr; }
+}
+
+/* Panel Fitur AI Accessibility & Media */
+.ai-panel {
+    background-color: #16222F;
+    border: 1px solid #00E5FF;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.ai-panel h3 {
+    font-size: 1.1rem;
+    color: #00E5FF;
+    margin-bottom: 0.5rem;
+}
+
+.btn-ai {
+    background-color: var(--accent-gold);
+    color: #000;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+}
+
+.btn-ai:hover {
+    background-color: #FFE55C;
+}
+
+.translation-result {
+    margin-top: 0.75rem;
+    padding: 0.5rem;
+    background-color: #0D1B2A;
+    border-left: 3px solid #00E5FF;
+    font-size: 0.95rem;
+    display: none;
+}
+
+/* STYLING GAMBAR PROFIL & GALERI TENUN */
+.profile-img-container {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.profile-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.profile-img-caption {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.2rem;
+}
+
+.gallery-item {
+    background-color: #121212;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
+.gallery-caption {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Helper Class */
+.link-gold {
+    color: var(--accent-gold);
+}
+
+.list-spaced {
+    margin-left: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+/* Relational Anchors Navigasi Antar Simpul */
+.node-anchors {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.node-anchors a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   5. FOOTER & SITEMAP (ANTI-LOST IN HYPERSPACE)
+   ========================================================================== */
+footer {
+    background-color: #000000;
+    border-top: 2px solid var(--border-color);
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+.footer-title {
+    color: var(--accent-gold);
+    margin-bottom: 0.5rem;
+}
+
+.footer-text {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.sitemap ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+
+.sitemap a {
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.sitemap a:hover {
+    color: var(--accent-gold);
+}
+/* ==========================================================================
+   STYLING KHUSUS TAMPILAN UTAMA / LANDING PAGE (beranda.html)
+   ========================================================================== */
+.landing-body {
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 60%, #020617 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.landing-container {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.landing-card {
+    background: rgba(30, 30, 30, 0.85);
+    border: 2px solid var(--accent-gold);
+    border-radius: 16px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 215, 0, 0.15);
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+.landing-title {
+    font-size: 3.2rem;
+    color: var(--accent-gold);
+    margin: 0.5rem 0 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.landing-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+}
+
+.landing-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+    text-align: left;
+}
+
+.feature-item {
+    background-color: rgba(18, 18, 18, 0.7);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.feature-icon {
+    font-size: 1.8rem;
+}
+
+.feature-item strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+
+.feature-item p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.landing-action {
+    margin-top: 1rem;
+}
+
+.btn-enter {
+    display: inline-block;
+    background-color: var(--accent-gold);
+    color: #000000;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-enter:hover {
+    background-color: #FFE55C;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+}
+
+@media (max-width: 600px) {
+    .landing-title { font-size: 2.2rem; }
+    .landing-card { padding: 2rem 1.2rem; }
+    .landing-features { grid-template-columns: 1fr; }
+}
