@@ -24,12 +24,6 @@
                     <li><a href="#v3" id="nav-v3" onclick="switchNode('v3'); return false;">v3: Falsafah Ukun-Lais</a></li>
                     <li><a href="#v4" id="nav-v4" onclick="switchNode('v4'); return false;">v4: Galeri Tenun</a></li>
                     <li><a href="#v5" id="nav-v5" onclick="switchNode('v5'); return false;">v5: Peta & Audio</a></li>
-                    <!-- LINK LAPORAN GOOGLE DRIVE TELAH TERPASANG DI HEADER -->
-                    <li>
-                        <a href="https://drive.google.com/file/d/1v7kO9f675oWZ6PaXWS6I_LpcK32iABTv/view?usp=sharing" target="_blank" style="background-color: #FFD700; color: #121212; padding: 6px 12px; border-radius: 4px; font-weight: bold; text-decoration: none; margin-left: 10px;">
-                            📄 Laporan Projek
-                        </a>
-                    </li>
                 </ul>
             </nav>
         </div>
@@ -57,13 +51,6 @@
                     <p class="hero-description">
                         Menjelajahi keanekaragaman tradisi, tata hukum adat <em>Ukun-Lais</em>, keindahan seni tenun ikat, serta fonetik bahasa lokal masyarakat Suku Boti di Kabupaten Timor Tengah Selatan.
                     </p>
-                    
-                    <!-- TOMBOL LAPORAN GOOGLE DRIVE TELAH TERPASANG DI HERO BANNER -->
-                    <div style="margin-top: 1.5rem;">
-                        <a href="https://drive.google.com/file/d/1v7kO9f675oWZ6PaXWS6I_LpcK32iABTv/view?usp=sharing" target="_blank" style="display: inline-block; background-color: #FFD700; color: #121212; font-weight: bold; padding: 10px 20px; border-radius: 6px; text-decoration: none; border: 2px solid #FFD700;">
-                            📄 Baca Laporan Lengkap Projek (PDF/Word)
-                        </a>
-                    </div>
                 </div>
             </div>
 
@@ -308,6 +295,7 @@
             <div>
                 <h3 class="footer-title">Arsitektur Hypermedia</h3>
                 <p class="footer-text">
+                    Proyek Mini OBE - Kelompok 3-4<br>
                     Standar Encoding: UTF-8 | Aksesibilitas: WCAG AAA
                 </p>
             </div>
@@ -361,4 +349,85 @@
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        // 2. FUNGSI
+        // 2. FUNGSI SUARA AI TEXT-TO-SPEECH (TTS BERANDA - v1)
+        function playTextToSpeech() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+
+                const teks = "Selamat datang di website Hypermedia Kebudayaan Suku Boti. Suku Boti terbagi menjadi dua kelompok utama, yaitu Boti Dalam dan Boti Luar.";
+                const utterance = new SpeechSynthesisUtterance(teks);
+                
+                utterance.lang = 'id-ID';
+                utterance.rate = 0.9;
+                utterance.pitch = 1.0;
+
+                const btn = document.getElementById('btn-play-tts');
+                if (btn) {
+                    btn.innerText = "🔊 Memutar Suara...";
+                    btn.disabled = true;
+                }
+
+                utterance.onend = function() {
+                    if (btn) {
+                        btn.innerText = "▶ Putar Narasi Audio";
+                        btn.disabled = false;
+                    }
+                };
+                utterance.onerror = function() {
+                    if (btn) {
+                        btn.innerText = "▶ Putar Narasi Audio";
+                        btn.disabled = false;
+                    }
+                };
+
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 3. FUNGSI SUARA AI TTS SALAM ADAT UAB METO (v5)
+        function playUabMetoAudio() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+
+                const teks = "Tabea. Hale Uis Neno nafen nokan tababu. Selamat datang di wilayah adat Suku Boti.";
+                const utterance = new SpeechSynthesisUtterance(teks);
+                
+                utterance.lang = 'id-ID';
+                utterance.rate = 0.85;
+                utterance.pitch = 1.0;
+
+                const btn = document.getElementById('btn-play-uab');
+                if (btn) {
+                    btn.innerText = "🔊 Memutar Suara Uab Meto...";
+                    btn.disabled = true;
+                }
+
+                utterance.onend = function() {
+                    if (btn) {
+                        btn.innerText = "🔊 Putar Audio Uab Meto";
+                        btn.disabled = false;
+                    }
+                };
+                utterance.onerror = function() {
+                    if (btn) {
+                        btn.innerText = "🔊 Putar Audio Uab Meto";
+                        btn.disabled = false;
+                    }
+                };
+
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 4. FUNGSI TRANSLASI INTERAKTIF (v3)
+        function toggleTranslation() {
+            const res = document.getElementById('nmt-result');
+            if (res.style.display === 'block') {
+                res.style.display = 'none';
+            } else {
+                res.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
